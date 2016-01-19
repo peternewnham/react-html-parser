@@ -16,14 +16,18 @@
     "build:umd:min": "webpack src/index.js -p dist/react-html-parser.min.js --config webpack.config.production.js",
     "prerelease": "npm run clean && npm run check",
     "release": "npm run build",
-    "postrelease": "git push --follow-tags",
+    "postrelease": "git push --follow-tags && npm publish",
     "release:patch": "npm version patch && npm run release",
     "release:minor": "npm version minor && npm run release",
     "release:major": "npm version major && npm run release"
   },
   "keywords": [
     "react",
-    "html"
+    "html",
+    "htmlparser",
+    "htmlparser2",
+    "inner html",
+    "dangerouslySetInnerHTML"
   ],
   "author": "Peter Newnham",
   "license": "MIT",
