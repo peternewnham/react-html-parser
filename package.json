@@ -21,6 +21,10 @@
     "release:minor": "npm version minor && npm run release",
     "release:major": "npm version major && npm run release"
   },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/wrakky/react-html-parser.git"
+  },
   "keywords": [
     "react",
     "html",
