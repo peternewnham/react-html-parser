@@ -15,7 +15,6 @@ module.exports = function(karma) {
     singleRun: false,
     frameworks: [
       'jasmine',
-      'jasmine-expect-jsx',
       'phantomjs-shim'
     ],
     preprocessors: {
