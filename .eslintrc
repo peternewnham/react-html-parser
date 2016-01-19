@@ -1,0 +1,22 @@
+{
+  "extends": "eslint:recommended",
+  "ecmaFeatures": {
+    "jsx": true,
+    "modules": true
+  },
+  "env": {
+    "browser": true,
+    "node": true,
+    "jasmine": true,
+    "es6": true
+  },
+  "plugins": [
+    "react"
+  ],
+  "rules": {
+    "semi": [2, "always"],
+    "quotes": [2, "single"],
+    "indent": [2, 2, {"SwitchCase": 1}],
+    "eol-last": 2
+  }
+}

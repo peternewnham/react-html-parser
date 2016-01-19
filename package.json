@@ -1,0 +1,65 @@
+{
+  "name": "react-html-parser",
+  "version": "1.0.0",
+  "description": "Parse HTML into React components",
+  "main": "lib/index.js",
+  "jsnext:main": "src/index.js",
+  "scripts": {
+    "clean": "rimraf coverage dist lib",
+    "check": "npm run lint && npm run test",
+    "test": "karma start --single-run",
+    "test:watch": "karma start",
+    "lint": "eslint src test",
+    "build": "npm run build:lib && npm run build:umd && npm run build:umd:min",
+    "build:lib": "rimraf lib && babel ./src -d lib",
+    "build:umd": "webpack src/index.js dist/react-html-parser.js --config webpack.config.development.js",
+    "build:umd:min": "webpack src/index.js -p dist/react-html-parser.min.js --config webpack.config.production.js",
+    "prerelease": "npm run clean && npm run check",
+    "release": "npm run build",
+    "postrelease": "echo DONE",
+    "postreleases": "git push --follow-tags",
+    "release:patch": "npm run release",
+    "release:minor": "npm version minor && npm run release",
+    "release:major": "npm version major && npm run release"
+  },
+  "keywords": [
+    "react",
+    "html"
+  ],
+  "author": "Peter Newnham",
+  "license": "MIT",
+  "devDependencies": {
+    "babel": "^6.3.26",
+    "babel-cli": "^6.4.0",
+    "babel-core": "^6.4.0",
+    "babel-loader": "^6.2.1",
+    "babel-plugin-transform-object-assign": "^6.3.13",
+    "babel-preset-es2015": "^6.3.13",
+    "babel-preset-react": "^6.3.13",
+    "eslint-plugin-react": "3.15.0",
+    "html-webpack-plugin": "^1.7.0",
+    "inject-loader": "2.0.1",
+    "isparta-loader": "^2.0.0",
+    "jasmine-core": "^2.4.1",
+    "json-loader": "^0.5.4",
+    "karma": "^0.13.19",
+    "karma-coverage": "^0.5.3",
+    "karma-jasmine": "^0.3.6",
+    "karma-phantomjs-shim": "^1.2.0",
+    "karma-spec-reporter": "0.0.23",
+    "karma-webpack": "^1.7.0",
+    "phantomjs": "^1.9.19",
+    "react": "^0.14.6",
+    "react-addons-test-utils": "^0.14.6",
+    "react-dom": "^0.14.6",
+    "rimraf": "^2.5.0",
+    "webpack": "^1.12.11",
+    "webpack-dev-server": "^1.14.1"
+  },
+  "dependencies": {
+    "htmlparser2": "^3.9.0"
+  },
+  "peerDependencies": {
+    "react": "^0.13.0 || ^0.14.0"
+  }
+}
