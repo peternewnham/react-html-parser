@@ -5,3 +5,5 @@ node_js:
 script:
   - npm run lint
   - npm test
+# Send coverage data to Coveralls
+after_script: "cat ./coverage/lcov.info | ./node_modules/coveralls/bin/coveralls.js"
