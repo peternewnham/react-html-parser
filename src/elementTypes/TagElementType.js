@@ -2,7 +2,7 @@ import React from 'react';
 import ProcessNodes from '../utils/ProcessNodes';
 import GeneratePropsFromAttributes from '../utils/GeneratePropsFromAttributes';
 import TransformTagName from '../utils/TransformTagName';
-import isVoidElement from '../utils/isVoidElement';
+import VoidElements from '../dom/elements/VoidElements';
 
 /**
  * Converts any element (excluding style - see StyleElementType - and script) to a react element.
@@ -21,7 +21,7 @@ export default function TagElementType(node, key) {
 
   // If the node is not a void element and has children then process them
   let children = null;
-  if (!isVoidElement(tagName)) {
+  if (VoidElements.indexOf(tagName) === -1) {
     children = ProcessNodes(node.children);
   }
 

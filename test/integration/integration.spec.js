@@ -77,4 +77,10 @@ describe('Integration tests: ', () => {
     test('<img><p>test</p></img>', '<img/><p>test</p>');
   });
 
+  it('should convert boolean attribute values', () => {
+    test('<input disabled>', '<input disabled=""/>');
+    test('<input disabled="">', '<input disabled=""/>');
+    test('<input disabled="disabled">', '<input disabled=""/>');
+  });
+
 });
