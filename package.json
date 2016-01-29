@@ -9,7 +9,7 @@
     "check": "npm run lint && npm run test",
     "test": "karma start --single-run",
     "test:watch": "karma start",
-    "lint": "eslint src test",
+    "lint": "eslint src test demo/src",
     "build": "npm run build:lib && npm run build:umd && npm run build:umd:min",
     "build:lib": "rimraf lib && babel ./src -d lib",
     "build:umd": "webpack src/index.js dist/react-html-parser.js --config webpack.config.development.js",
@@ -19,7 +19,11 @@
     "postrelease": "git push --follow-tags && npm publish",
     "release:patch": "npm version patch && npm run release",
     "release:minor": "npm version minor && npm run release",
-    "release:major": "npm version major && npm run release"
+    "release:major": "npm version major && npm run release",
+    "demo:clean": "rimraf demo/dist",
+    "demo:build": "cd demo && npm run build",
+    "demo:push": "cd demo/dist && git init && git commit --allow-empty -m 'update demo' && git checkout -b gh-pages && git add . && git commit -am 'update demo' && git push git@github.com:wrakky/react-html-parser gh-pages --force",
+    "demo:publish": "npm run demo:clean && npm run demo:build && npm run demo:push"
   },
   "repository": {
     "type": "git",

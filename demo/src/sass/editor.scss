@@ -1,0 +1,26 @@
+$button-background: #3498db;
+
+#editor {
+  border: 1px solid #aaa;
+  display: flex;
+  flex-direction: column;
+  #HTML_EDITOR {
+    flex: 1;
+  }
+  .buttons {
+    text-align: right;
+    padding: 5px 10px;
+    border-top: 1px solid #aaa;
+    button {
+      border-radius: 5px;
+      border: none;
+      color: #fff;
+      background: $button-background;
+      padding: 5px 10px;
+      cursor: pointer;
+      &:hover {
+        background: lighten($button-background, 5%)
+      }
+    }
+  }
+}
