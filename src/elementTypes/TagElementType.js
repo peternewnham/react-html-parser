@@ -2,6 +2,7 @@ import React from 'react';
 import ProcessNodes from '../utils/ProcessNodes';
 import GeneratePropsFromAttributes from '../utils/GeneratePropsFromAttributes';
 import TransformTagName from '../utils/TransformTagName';
+import isVoidElement from '../utils/isVoidElement';
 
 /**
  * Converts any element (excluding style - see StyleElementType - and script) to a react element.
@@ -12,14 +13,17 @@ import TransformTagName from '../utils/TransformTagName';
  */
 export default function TagElementType(node, key) {
 
-  // If the node has children process them
-  const children = ProcessNodes(node.children);
-
   // generate props
   const props = GeneratePropsFromAttributes(node.attribs, key);
 
   // transform the tag name if needed
   const tagName = TransformTagName(node.name);
+
+  // If the node is not a void element and has children then process them
+  let children = null;
+  if (!isVoidElement(tagName)) {
+    children = ProcessNodes(node.children);
+  }
 
   // create and return the element
   return React.createElement(tagName, props, children);
