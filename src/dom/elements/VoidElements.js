@@ -1,4 +1,9 @@
-const voidElements = [
+/**
+ * List of void elements
+ * These elements are not allowed to have children
+ * @type {Array}
+ */
+export default [
   'area',
   'base',
   'br',
@@ -16,9 +21,3 @@ const voidElements = [
   'track',
   'wbr'
 ];
-
-export default function isVoidElement(element) {
-
-  return voidElements.indexOf(element) >= 0;
-
-}

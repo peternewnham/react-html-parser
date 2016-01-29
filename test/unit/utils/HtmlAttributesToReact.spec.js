@@ -19,7 +19,10 @@ describe('Testing `utils/HtmlAttributesToReact`', () => {
       'aria-role': 'role',
       // it should also use non specified attributes (although react will filter these out)
       testattribute: 'testAttribute',
-      'UPPER-CASE-TEST-ATTRIBUTE': 'upperTestAttribute'
+      'UPPER-CASE-TEST-ATTRIBUTE': 'upperTestAttribute',
+      // boolean attributes
+      disabled: '',
+      checked: ''
     };
 
     const expectedReactAttributes = {
@@ -32,7 +35,9 @@ describe('Testing `utils/HtmlAttributesToReact`', () => {
       'data-test': 'test',
       'aria-role': 'role',
       testattribute: 'testAttribute',
-      'upper-case-test-attribute': 'upperTestAttribute'
+      'upper-case-test-attribute': 'upperTestAttribute',
+      disabled: 'disabled',
+      checked: 'checked'
     };
 
     expect(HtmlAttributesToReact(htmlAttributes)).toEqual(expectedReactAttributes);

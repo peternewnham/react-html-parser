@@ -1,11 +1,11 @@
 const GeneratePropsFromAttributes = jasmine.createSpy('GeneratePropsFromAttributes').and.callFake(attrs => attrs);
 const ProcessNodes = jasmine.createSpy('ProcessNodes').and.returnValue('children');
-const isVoidElement = jasmine.createSpy('isVoidElement').and.returnValue(false);
+const VoidElements = ['void'];
 
 const TagElementType = require('inject!elementTypes/TagElementType')({
   '../utils/GeneratePropsFromAttributes': GeneratePropsFromAttributes,
   '../utils/ProcessNodes': ProcessNodes,
-  '../utils/isVoidElement': isVoidElement
+  '../dom/elements/VoidElements': VoidElements
 }).default;
 
 describe('Testing `elementTypes/TagElementType', () => {
@@ -13,7 +13,6 @@ describe('Testing `elementTypes/TagElementType', () => {
   beforeEach(() => {
     GeneratePropsFromAttributes.calls.reset();
     ProcessNodes.calls.reset();
-    isVoidElement.calls.reset();
   });
 
   it('should return a React element corresponding to the node name', () => {
@@ -45,7 +44,6 @@ describe('Testing `elementTypes/TagElementType', () => {
       },
       children: 'child'
     };
-    isVoidElement.and.returnValue(true);
 
     const voidElement = TagElementType(voidNode, 'key');
     expect(voidElement.type).toBe('void');
