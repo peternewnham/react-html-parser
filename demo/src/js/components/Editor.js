@@ -1,8 +1,8 @@
 import React, { Component, PropTypes } from 'react';
-import brace from 'brace';
-import AceEditor from 'react-ace';
+import brace from 'brace'; // eslint-disable-line no-unused-vars
 import 'brace/mode/html';
 import 'brace/theme/chrome';
+import AceEditor from 'react-ace';
 
 import 'sass/editor';
 
@@ -27,6 +27,10 @@ export default class Editor extends Component {
   render() {
     const { onUpdateClick } = this.props;
     const { html } = this.state;
+    const editorProps = {
+      $blockScrolling: Infinity,
+      wrap: true
+    };
     return (
       <div id="editor">
         <AceEditor mode="html"
@@ -37,10 +41,7 @@ export default class Editor extends Component {
                    height="auto"
                    onChange={this.onChange}
                    onLoad={this.onEditorLoad}
-                   editorProps={{
-                    $blockScrolling: Infinity,
-                    wrap: true
-                   }}
+                   editorProps={ editorProps }
         />
         <div className="buttons">
           <button onClick={ () => onUpdateClick(html) }>Update HTML</button>
@@ -51,8 +52,8 @@ export default class Editor extends Component {
 }
 
 Editor.propTypes = {
-  initialHtml: React.PropTypes.string.isRequired,
-  onUpdateClick: React.PropTypes.func.isRequired
+  initialHtml: PropTypes.string.isRequired,
+  onUpdateClick: PropTypes.func.isRequired
 };
 
 export default Editor;

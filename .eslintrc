@@ -2,7 +2,8 @@
   "extends": "eslint:recommended",
   "ecmaFeatures": {
     "jsx": true,
-    "modules": true
+    "modules": true,
+    "spread": true
   },
   "env": {
     "browser": true,
@@ -17,6 +18,7 @@
     "semi": [2, "always"],
     "quotes": [2, "single"],
     "indent": [2, 2, {"SwitchCase": 1}],
-    "eol-last": 2
+    "eol-last": 2,
+    "react/jsx-uses-react": 1
   }
 }
