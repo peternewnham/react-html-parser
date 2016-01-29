@@ -1,6 +1,6 @@
 # React HTML Parser
 
-A utility library for converting HTML strings into [React](https://facebook.github.io/react/) components. Avoids the use of dangerouslySetInnerHTML and converts standard HTML elements, attributes and inline styles into their React equivalents.
+A utility for converting HTML strings into [React](https://facebook.github.io/react/) components. Avoids the use of dangerouslySetInnerHTML and converts standard HTML elements, attributes and inline styles into their React equivalents.
 
 [Try the Live Demo](https://wrakky.github.io/react-html-parser)
 

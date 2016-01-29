@@ -73,4 +73,8 @@ describe('Integration tests: ', () => {
     test('<body>test</body>', '<div>test</div>');
   });
 
+  it('should not allow nesting of void elements', () => {
+    test('<img><p>test</p></img>', '<img/><p>test</p>');
+  });
+
 });
