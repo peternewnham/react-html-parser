@@ -1,6 +1,6 @@
 {
   "name": "react-html-parser",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "Parse HTML into React components",
   "main": "lib/index.js",
   "jsnext:main": "src/index.js",
