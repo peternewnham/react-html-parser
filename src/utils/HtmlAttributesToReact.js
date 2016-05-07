@@ -12,7 +12,8 @@ const getParsedAttributeValue = function(attribute, value) {
 
   // if the attribute if a boolean then it's value should be the same as it's name
   // e.g. disabled="disabled"
-  if (BooleanAttributes.indexOf(attribute) >= 0) {
+  let lowerBooleanAttributes = BooleanAttributes.map(attr => attr.toLowerCase());
+  if (lowerBooleanAttributes.indexOf(attribute.toLowerCase()) >= 0) {
     value = attribute;
   }
 
