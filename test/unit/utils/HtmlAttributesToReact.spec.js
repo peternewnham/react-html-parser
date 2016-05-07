@@ -22,7 +22,8 @@ describe('Testing `utils/HtmlAttributesToReact`', () => {
       'UPPER-CASE-TEST-ATTRIBUTE': 'upperTestAttribute',
       // boolean attributes
       disabled: '',
-      checked: ''
+      checked: '',
+      autoplay: ''
     };
 
     const expectedReactAttributes = {
@@ -30,14 +31,15 @@ describe('Testing `utils/HtmlAttributesToReact`', () => {
       htmlFor: 'testFor',
       minLength: 1,
       acceptCharset: 'testAcceptCharset',
-      formNoValidate: 'testFormNoValidate',
+      formNoValidate: 'formNoValidate',
       label: 'testLabel',
       'data-test': 'test',
       'aria-role': 'role',
       testattribute: 'testAttribute',
       'upper-case-test-attribute': 'upperTestAttribute',
       disabled: 'disabled',
-      checked: 'checked'
+      checked: 'checked',
+      autoPlay: 'autoPlay'
     };
 
     expect(HtmlAttributesToReact(htmlAttributes)).toEqual(expectedReactAttributes);
