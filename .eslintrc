@@ -1,9 +1,12 @@
 {
   "extends": "eslint:recommended",
-  "ecmaFeatures": {
-    "jsx": true,
-    "modules": true,
-    "spread": true
+  "parserOptions": {
+    "ecmaVersion": 6,
+    "sourceType": "module",
+    "ecmaFeatures": {
+      "jsx": true,
+      "spread": true
+    }
   },
   "env": {
     "browser": true,
@@ -19,6 +22,7 @@
     "quotes": [2, "single"],
     "indent": [2, 2, {"SwitchCase": 1}],
     "eol-last": 2,
-    "react/jsx-uses-react": 1
+    "react/jsx-uses-react": 1,
+    "react/jsx-uses-vars": 1
   }
 }
