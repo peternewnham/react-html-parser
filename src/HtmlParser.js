@@ -8,6 +8,6 @@ import ProcessNodes from './utils/ProcessNodes';
  * @returns {Array} List of top level React elements
  */
 export default function HtmlParser(html) {
-  const nodes = htmlparser2.parseDOM(html);
+  const nodes = htmlparser2.parseDOM(html, {decodeEntities: true});
   return ProcessNodes(nodes);
 }
