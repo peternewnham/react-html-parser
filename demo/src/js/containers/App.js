@@ -14,7 +14,7 @@ class App extends React.Component {
     return (
       <div id="app">
         <Header />
-        <Content onUpdateClick={ html => dispatch(updateHtml(html)) } html={ html } />
+        <Content onUpdateClick={html => dispatch(updateHtml(html))} html={html} />
       </div>
     );
   }

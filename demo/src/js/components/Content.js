@@ -8,8 +8,8 @@ export default function Content(props) {
   const { html, onUpdateClick } = props;
   return (
     <main id="content">
-      <Editor initialHtml={ html } onUpdateClick={ onUpdateClick } />
-      <Html html={ html } />
+      <Editor initialHtml={html} onUpdateClick={onUpdateClick} />
+      <Html html={html} />
     </main>
   );
 }
