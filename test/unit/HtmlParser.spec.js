@@ -17,7 +17,7 @@ describe('Testing: `HtmlParser`', () => {
 
   it('should parse the html string and process the resulting nodes', () => {
     expect(HtmlParser('html')).toBe('processed');
-    expect(htmlparser2.parseDOM).toHaveBeenCalledWith('html');
+    expect(htmlparser2.parseDOM).toHaveBeenCalledWith('html', {decodeEntities: true});
     expect(ProcessNodes).toHaveBeenCalledWith('parsed');
   });
 
