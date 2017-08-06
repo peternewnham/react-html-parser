@@ -6,7 +6,7 @@ import AceEditor from 'react-ace';
 
 import 'sass/editor';
 
-export default class Editor extends Component {
+class Editor extends Component {
   constructor(props) {
     super();
     this.state = {
@@ -36,15 +36,15 @@ export default class Editor extends Component {
         <AceEditor mode="html"
                    theme="chrome"
                    name="HTML_EDITOR"
-                   value={ html }
+                   value={html}
                    width="100%"
                    height="auto"
                    onChange={this.onChange}
                    onLoad={this.onEditorLoad}
-                   editorProps={ editorProps }
+                   editorProps={editorProps}
         />
         <div className="buttons">
-          <button onClick={ () => onUpdateClick(html) }>Update HTML</button>
+          <button onClick={() => onUpdateClick(html)}>Update HTML</button>
         </div>
       </div>
     );
@@ -55,5 +55,3 @@ Editor.propTypes = {
   initialHtml: PropTypes.string.isRequired,
   onUpdateClick: PropTypes.func.isRequired
 };
-
-export default Editor;

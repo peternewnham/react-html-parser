@@ -7,7 +7,7 @@ export default function Html(props) {
   const { html } = props;
   return (
     <div id="html">
-      { ReactHtmlParser(html) }
+      {ReactHtmlParser(html)}
     </div>
   );
 }
