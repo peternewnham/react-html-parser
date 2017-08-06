@@ -12,7 +12,7 @@ A utility for converting HTML strings into [React](https://facebook.github.io/re
 ## Install
 
 ```
-npm install react-html-parser
+npm install https://github.com/Budgee/react-html-parser.git
 ```
 
 ## Usage
