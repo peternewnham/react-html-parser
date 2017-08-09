@@ -68,18 +68,6 @@ describe('Integration tests: ', () => {
     test(`<div style="border-radius:1px;background:red${trailingSemiComma}">test</div>`);
   });
 
-  it('should transform a html tag to a div', () => {
-    test('<html>test</html>', '<div>test</div>');
-  });
-
-  it('should transform a head tag to a div', () => {
-    test('<head>test</head>', '<div>test</div>');
-  });
-
-  it('should transform a body tag to a div', () => {
-    test('<body>test</body>', '<div>test</div>');
-  });
-
   it('should not allow nesting of void elements', () => {
     test('<img><p>test</p></img>', '<img/><p>test</p>');
   });

@@ -3,6 +3,7 @@
 ## v2.0.0
 ### Breaking Changes
 - ReactHtmlParser now decodes html entities by default
+- html, head and body tags are no longer automatically converted to div tags
 ### Updates
 - Add React v16 as a peer dependency
 - Added options parameter to ReactHtmlParser function with `decodeEntities` option (default true)
