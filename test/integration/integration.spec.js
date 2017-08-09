@@ -6,12 +6,12 @@ const reactVersion = parseInt(require('react/package.json').version.match(/^(\d+
 
 class HtmlParserComponent extends React.Component {
   render() {
-    return <div>{HtmlParser(this.props.html)}</div>;
+    return <div>{HtmlParser(this.props.html, this.props.options)}</div>;
   }
 }
 
-const test = function(html, override=null) {
-  const actual = ReactDOMServer.renderToStaticMarkup(<HtmlParserComponent html={html} />);
+const test = function(html, override=null, options={}) {
+  const actual = ReactDOMServer.renderToStaticMarkup(<HtmlParserComponent html={html} options={options} />);
   const expected = `<div>${override === null && html || override}</div>`;
   expect(actual).toBe(expected);
 };
@@ -88,6 +88,20 @@ describe('Integration tests: ', () => {
     test('<input disabled>', '<input disabled=""/>');
     test('<input disabled="">', '<input disabled=""/>');
     test('<input disabled="disabled">', '<input disabled=""/>');
+  });
+
+  it('should decode html entities by default', () => {
+    test('<span>&excl;</span>', '<span>!</span>');
+  });
+
+  it('should not decode html entities when the option is disabled', () => {
+    test(
+      '<span>&excl;</span>',
+      '<span>&amp;excl;</span>',
+      {
+        decodeEntities: false
+      }
+    );
   });
 
 });

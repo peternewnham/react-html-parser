@@ -4,6 +4,7 @@
     "es2015"
   ],
   "plugins": [
-    "transform-object-assign"
+    "transform-object-assign",
+    "transform-object-rest-spread"
   ]
 }
