@@ -8,9 +8,10 @@ class HtmlParserComponent extends React.Component {
   }
 }
 
-const test = function(html, expected=null) {
-  expect(ReactDOMServer.renderToStaticMarkup(<HtmlParserComponent html={html} />))
-    .toBe(`<div>${expected === null && html || expected}</div>`);
+const test = function(html, override=null) {
+  const actual = ReactDOMServer.renderToStaticMarkup(<HtmlParserComponent html={html} />);
+  const expected = `<div>${override === null && html || override}</div>`;
+  expect(actual).toBe(expected);
 };
 
 describe('Integration tests: ', () => {
@@ -58,7 +59,7 @@ describe('Integration tests: ', () => {
   });
 
   it('should handle inline styles', () => {
-    test('<div style="border-radius:1px;background:red;">test</div>');
+    test('<div style="border-radius:1px;background:red">test</div>');
   });
 
   it('should transform a html tag to a div', () => {

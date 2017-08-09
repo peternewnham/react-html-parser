@@ -9,14 +9,13 @@ env:
   - REACT_VERSION=next # 16 beta
   - REACT_VERSION=15
   - REACT_VERSION=0.14
-  - REACT_VERSION=0.13
 
 script:
   - npm run lint
   - npm test
 
 before_script:
-  - npm install react@$REACT_VERSION
+  - npm install react@$REACT_VERSION react-dom@$REACT_VERSION
 
 after_script:
   - "cat ./coverage/lcov.info | ./node_modules/coveralls/bin/coveralls.js"  # Send coverage data to Coveralls
