@@ -1,9 +1,22 @@
 language: node_js
+
 node_js:
-  - "4"
-  - "5"
+  - 8
+  - 6
+  - 4
+
+env:
+  - REACT_VERSION=next # 16 beta
+  - REACT_VERSION=15
+  - REACT_VERSION=0.14
+  - REACT_VERSION=0.13
+
 script:
   - npm run lint
   - npm test
-# Send coverage data to Coveralls
-after_script: "cat ./coverage/lcov.info | ./node_modules/coveralls/bin/coveralls.js"
+
+before_script:
+  - npm install react@$REACT_VERSION
+
+after_script:
+  - "cat ./coverage/lcov.info | ./node_modules/coveralls/bin/coveralls.js"  # Send coverage data to Coveralls
