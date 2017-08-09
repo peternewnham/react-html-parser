@@ -23,6 +23,7 @@ export default [
   'muted',
   'novalidate',
   'open',
+  'playsinline',
   'readonly',
   'required',
   'reversed',
