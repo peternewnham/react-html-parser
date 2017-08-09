@@ -55,5 +55,3 @@ Editor.propTypes = {
   initialHtml: PropTypes.string.isRequired,
   onUpdateClick: PropTypes.func.isRequired
 };
-
-export default Editor;
