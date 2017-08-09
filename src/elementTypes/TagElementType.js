@@ -1,7 +1,6 @@
 import React from 'react';
 import ProcessNodes from '../utils/ProcessNodes';
 import GeneratePropsFromAttributes from '../utils/GeneratePropsFromAttributes';
-import TransformTagName from '../utils/TransformTagName';
 import VoidElements from '../dom/elements/VoidElements';
 
 /**
@@ -17,7 +16,7 @@ export default function TagElementType(node, key) {
   const props = GeneratePropsFromAttributes(node.attribs, key);
 
   // transform the tag name if needed
-  const tagName = TransformTagName(node.name);
+  const tagName = node.name;
 
   // If the node is not a void element and has children then process them
   let children = null;
