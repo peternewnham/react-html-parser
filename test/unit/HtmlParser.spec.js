@@ -15,9 +15,15 @@ describe('Testing: `HtmlParser`', () => {
     htmlparser2.parseDOM.calls.reset();
   });
 
-  it('should parse the html string and process the resulting nodes', () => {
+  it('should parse the html string and process the resulting nodes with default options', () => {
     expect(HtmlParser('html')).toBe('processed');
     expect(htmlparser2.parseDOM).toHaveBeenCalledWith('html', {decodeEntities: true});
+    expect(ProcessNodes).toHaveBeenCalledWith('parsed');
+  });
+
+  it('should allow decodeEntities option to be changed', () => {
+    expect(HtmlParser('html', { decodeEntities:false })).toBe('processed');
+    expect(htmlparser2.parseDOM).toHaveBeenCalledWith('html', {decodeEntities: false});
     expect(ProcessNodes).toHaveBeenCalledWith('parsed');
   });
 

@@ -24,7 +24,20 @@ import ReactHtmlParser from 'react-html-parser';
 class HtmlComponent extends React.Component {
   render() {
     const html = '<div>Example HTML string</div>';
-    return <div>{ ReactHtmlParser(html) }</div>;
+    const options = {
+      decodeEntities: true
+    };
+    return <div>{ ReactHtmlParser(html, options) }</div>;
   }
 }
 ```
+
+## API
+
+### `ReactHtmlParser(html, [options])`
+Takes an HTML string and returns equivalent React elements
+
+**Arguments**
+- html: The HTML string to parse
+- options: Options object
+  - decodeEntities=true *(boolean)*: Whether to decode html entities (defaults to true)
