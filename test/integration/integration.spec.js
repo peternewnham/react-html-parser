@@ -2,15 +2,18 @@ import React from 'react';
 import ReactDOMServer from 'react-dom/server';
 import HtmlParser from 'HtmlParser';
 
+const reactVersion = parseInt(require('react/package.json').version.match(/^(\d+)\./)[1], 10);
+
 class HtmlParserComponent extends React.Component {
   render() {
     return <div>{HtmlParser(this.props.html)}</div>;
   }
 }
 
-const test = function(html, expected=null) {
-  expect(ReactDOMServer.renderToStaticMarkup(<HtmlParserComponent html={html} />))
-    .toBe(`<div>${expected === null && html || expected}</div>`);
+const test = function(html, override=null) {
+  const actual = ReactDOMServer.renderToStaticMarkup(<HtmlParserComponent html={html} />);
+  const expected = `<div>${override === null && html || override}</div>`;
+  expect(actual).toBe(expected);
 };
 
 describe('Integration tests: ', () => {
@@ -58,7 +61,11 @@ describe('Integration tests: ', () => {
   });
 
   it('should handle inline styles', () => {
-    test('<div style="border-radius:1px;background:red;">test</div>');
+
+    // react 16 drops trailing semi commas from inline styles so we have to test for both
+    const trailingSemiComma = reactVersion === 15 ? ';' : '';
+
+    test(`<div style="border-radius:1px;background:red${trailingSemiComma}">test</div>`);
   });
 
   it('should transform a html tag to a div', () => {
