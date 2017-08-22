@@ -1,14 +1,14 @@
 import React from 'react';
-import GenerateElementProps from '../utils/GeneratePropsFromAttributes';
+import generateElementProps from '../utils/generatePropsFromAttributes';
 
 /**
  * Converts a <style> element to a React element
  *
  * @param {Object} node The style node
- * @param {String} key The key to give the React element
+ * @param {String} index The index of the React element relative to it's parent
  * @returns {React.Element} The React style element
  */
-export default function StyleElementType(node, key) {
+export default function StyleElementType(node, index) {
 
   // The style element only ever has a single child which is the styles so try and find this to add as
   // a child to the style element that will be created
@@ -18,7 +18,7 @@ export default function StyleElementType(node, key) {
   }
 
   // generate props
-  const props = GenerateElementProps(node.attribs, key);
+  const props = generateElementProps(node.attribs, index);
 
   // create and return the element
   return React.createElement('style', props, styles);

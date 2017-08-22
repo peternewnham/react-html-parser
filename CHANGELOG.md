@@ -6,7 +6,10 @@
 - html, head and body tags are no longer automatically converted to div tags
 ### Updates
 - Add React v16 as a peer dependency
-- Added options parameter to ReactHtmlParser function with `decodeEntities` option (default true)
+- Added new options parameter to ReactHtmlParser function with following properties:
+  - `decodeEntities` (boolean: default true) - whether to decode HTML entities
+  - `transform` (function) - function that can be used to transform parsed elements
+- Tags and attributes with invalid formats are now ignored and prevent React from blowing up
 
 ## v1.0.3
 ### Updates

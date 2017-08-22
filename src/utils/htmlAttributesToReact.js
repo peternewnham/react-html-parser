@@ -1,5 +1,6 @@
 import BooleanAttributes from '../dom/attributes/BooleanAttributes';
 import ReactAttributes from '../dom/attributes/ReactAttributes';
+import isValidTagOrAttributeName from './isValidTagOrAttributeName';
 
 /**
  * Returns the parsed attribute value taking into account things like boolean attributes
@@ -28,10 +29,11 @@ const getParsedAttributeValue = function(attribute, value) {
  * @param {Object} attributes The HTML attributes to convert
  * @returns {Object} The React attributes
  */
-export default function HtmlAttributesToReact(attributes) {
+export default function htmlAttributesToReact(attributes) {
 
   return Object
     .keys(attributes)
+    .filter(attr => isValidTagOrAttributeName(attr))
     .reduce(
       (mappedAttributes, attribute) => {
 

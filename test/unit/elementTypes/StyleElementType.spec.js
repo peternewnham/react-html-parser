@@ -2,16 +2,17 @@ const props = {
   prop1: 'value1',
   prop2: 'value2'
 };
-const GeneratePropsFromAttributes = jasmine.createSpy('GeneratePropsFromAttributes').and.returnValue(props);
+const generatePropsFromAttributes = jasmine.createSpy('generatePropsFromAttributes');
 
 const StyleElementType = require('inject!elementTypes/StyleElementType')({
-  '../utils/GeneratePropsFromAttributes': GeneratePropsFromAttributes
+  '../utils/generatePropsFromAttributes': generatePropsFromAttributes
 }).default;
 
 describe('Testing `elementTypes/StyleElementType', () => {
 
   beforeEach(() => {
-    GeneratePropsFromAttributes.calls.reset();
+    generatePropsFromAttributes.calls.reset();
+    generatePropsFromAttributes.and.returnValue(props);
   });
 
   it('should return a `style` element with a single text child if the node has children', () => {
