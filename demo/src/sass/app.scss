@@ -32,3 +32,13 @@ h1 {
   display: flex;
   flex-direction: column;
 }
+
+main {
+  display: flex;
+  flex: 1;
+  overflow: hidden;
+  > div {
+    flex: 1;
+    margin: 0 1rem 0 0;
+  }
+}

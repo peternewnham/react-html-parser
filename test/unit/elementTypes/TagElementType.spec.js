@@ -1,18 +1,26 @@
-const GeneratePropsFromAttributes = jasmine.createSpy('GeneratePropsFromAttributes').and.callFake(attrs => attrs);
-const ProcessNodes = jasmine.createSpy('ProcessNodes').and.returnValue('children');
+const generatePropsFromAttributes = jasmine.createSpy('generatePropsFromAttributes');
+const processNodes = jasmine.createSpy('processNodes');
 const VoidElements = ['void'];
+const isValidTagOrAttributeName = jasmine.createSpy('isValidTagOrAttributeName');
 
 const TagElementType = require('inject!elementTypes/TagElementType')({
-  '../utils/GeneratePropsFromAttributes': GeneratePropsFromAttributes,
-  '../utils/ProcessNodes': ProcessNodes,
-  '../dom/elements/VoidElements': VoidElements
+  '../utils/generatePropsFromAttributes': generatePropsFromAttributes,
+  '../processNodes': processNodes,
+  '../dom/elements/VoidElements': VoidElements,
+  '../utils/isValidTagOrAttributeName': isValidTagOrAttributeName
 }).default;
 
 describe('Testing `elementTypes/TagElementType', () => {
 
+  let transform;
   beforeEach(() => {
-    GeneratePropsFromAttributes.calls.reset();
-    ProcessNodes.calls.reset();
+    generatePropsFromAttributes.calls.reset();
+    generatePropsFromAttributes.and.callFake(attrs => attrs);
+    processNodes.calls.reset();
+    processNodes.and.returnValue('children');
+    isValidTagOrAttributeName.calls.reset();
+    isValidTagOrAttributeName.and.returnValue(true);
+    transform = function() {};
   });
 
   it('should return a React element corresponding to the node name', () => {
@@ -24,14 +32,14 @@ describe('Testing `elementTypes/TagElementType', () => {
       },
       children: 'node 1 children'
     };
-    const node1Element = TagElementType(node1, 'key');
+    const node1Element = TagElementType(node1, 'key', transform);
     expect(node1Element.type).toBe('h1');
     expect(node1Element.props).toEqual({
       id: 'test',
       children: 'children'
     });
-    expect(ProcessNodes).toHaveBeenCalledWith('node 1 children');
-    expect(GeneratePropsFromAttributes).toHaveBeenCalledWith(node1.attribs, 'key');
+    expect(processNodes).toHaveBeenCalledWith('node 1 children', transform);
+    expect(generatePropsFromAttributes).toHaveBeenCalledWith(node1.attribs, 'key');
 
   });
 
@@ -49,6 +57,14 @@ describe('Testing `elementTypes/TagElementType', () => {
     expect(voidElement.type).toBe('void');
     expect(voidElement.props.children).toBe(null);
 
+  });
+
+  it('should return null for invalid tag types', () => {
+    isValidTagOrAttributeName.and.returnValue(false);
+    const invalidNode = {
+      name: 'invalid'
+    };
+    expect(TagElementType(invalidNode)).toBeNull();
   });
 
 });

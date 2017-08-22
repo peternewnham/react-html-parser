@@ -1,6 +1,15 @@
-import HtmlAttributesToReact from 'utils/HtmlAttributesToReact';
+const isValidTagOrAttributeName = jasmine.createSpy('isValidTagOrAttributeName');
 
-describe('Testing `utils/HtmlAttributesToReact`', () => {
+const htmlAttributesToReact = require('inject!utils/htmlAttributesToReact')({
+  './isValidTagOrAttributeName': isValidTagOrAttributeName
+}).default;
+
+describe('Testing `utils/htmlAttributesToReact`', () => {
+
+  beforeEach(() => {
+    isValidTagOrAttributeName.calls.reset();
+    isValidTagOrAttributeName.and.returnValue(true);
+  });
 
   it('should return an object of react html attributes from an object of standard html attributes', () => {
 
@@ -42,8 +51,20 @@ describe('Testing `utils/HtmlAttributesToReact`', () => {
       autoPlay: 'autoPlay'
     };
 
-    expect(HtmlAttributesToReact(htmlAttributes)).toEqual(expectedReactAttributes);
+    expect(htmlAttributesToReact(htmlAttributes)).toEqual(expectedReactAttributes);
 
+  });
+
+  it('should filter out invalid attributes', () => {
+    isValidTagOrAttributeName.and.callFake(attribute => {
+      return attribute === 'attribute1' || attribute === 'attribute3';
+    });
+    const validKeys = htmlAttributesToReact({
+      attribute1: '',
+      attribute2: '',
+      attribute3: ''
+    });
+    expect(Object.keys(validKeys)).toEqual(['attribute1', 'attribute3']);
   });
 
 });

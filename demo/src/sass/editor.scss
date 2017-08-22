@@ -7,20 +7,29 @@ $button-background: #3498db;
   #HTML_EDITOR {
     flex: 1;
   }
-  .buttons {
-    text-align: right;
+  .presets {
     padding: 5px 10px;
-    border-top: 1px solid #aaa;
-    button {
-      border-radius: 5px;
-      border: none;
-      color: #fff;
-      background: $button-background;
-      padding: 5px 10px;
-      cursor: pointer;
-      &:hover {
-        background: lighten($button-background, 5%)
+    border-bottom: 1px solid #aaa;
+    display: flex;
+
+    ul {
+      margin: 0;
+      padding: 0;
+      flex: 1;
+      text-align: right;
+    }
+
+    li {
+      margin: 0;
+      padding: 0 10px;
+      list-style-type: none;
+      display: inline;
+      border-right: 1px solid #aaa;
+      &:last-of-type {
+        border: none;
+        padding-right: 0;
       }
     }
+
   }
 }

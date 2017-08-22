@@ -1,6 +1,6 @@
 import React from 'react';
 import ReactDOMServer from 'react-dom/server';
-import HtmlParser from 'HtmlParser';
+import HtmlParser, { convertNodeToElement } from 'index';
 
 const reactVersion = parseInt(require('react/package.json').version.match(/^(\d+)\./)[1], 10);
 
@@ -89,6 +89,84 @@ describe('Integration tests: ', () => {
       {
         decodeEntities: false
       }
+    );
+  });
+
+  describe('transform function', () => {
+
+    it('should use the response when it is not undefined', () => {
+      test(
+        '<span>test</span><div>another</div>',
+        '<p>transformed</p><p>transformed</p>',
+        {
+          transform(node, index) {
+            return <p key={index}>transformed</p>;
+          }
+        }
+      );
+    });
+
+    it('should not render elements and children when returning null', () => {
+      test(
+        '<p>test<span>inner test<b>bold child</b></span></p>',
+        '<p>test</p>',
+        {
+          transform(node) {
+            if (node.type === 'tag' && node.name === 'span') {
+              return null;
+            }
+          }
+        }
+      );
+    });
+
+    it('should allow modifying nodes', () => {
+      test(
+        '<a href="/test">test link</a>',
+        '<a href="/changed">test link</a>',
+        {
+          transform(node, index) {
+            node.attribs.href = '/changed';
+            return convertNodeToElement(node, index);
+          }
+        }
+      );
+    });
+
+    it('should allow passing the transform function down to children', () => {
+      const transform = function(node, index) {
+        if (node.type === 'tag') {
+          if (node.name === 'ul') {
+            node.attribs.class = 'test';
+            return convertNodeToElement(node, index, transform);
+          }
+        }
+        if (node.type === 'text') {
+          return node.data.replace(/list/, 'changed');
+        }
+      };
+      test(
+        '<ul><li>list 1</li><li>list 2</li></ul>',
+        '<ul class="test"><li>changed 1</li><li>changed 2</li></ul>',
+        {
+          transform
+        }
+      );
+    });
+
+  });
+
+  it('should not render invalid tags', () => {
+    test(
+      '<div>test<test</div>',
+      '<div>test</div>'
+    );
+  });
+
+  it('should not render invalid attributes', () => {
+    test(
+      '<div test<="test" class="test">content</div>',
+      '<div class="test">content</div>'
     );
   });
 

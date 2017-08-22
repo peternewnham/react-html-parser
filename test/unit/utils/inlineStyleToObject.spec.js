@@ -1,10 +1,10 @@
-import InlineStyleToObject from 'utils/InlineStyleToObject';
+import inlineStyleToObject from 'utils/inlineStyleToObject';
 
-describe('Testing `utils/InlineStyleToObject', () => {
+describe('Testing `utils/inlineStyleToObject', () => {
 
   it('should return an empty object if the inline style is empty', () => {
-    expect(InlineStyleToObject()).toEqual({});
-    expect(InlineStyleToObject('')).toEqual({});
+    expect(inlineStyleToObject()).toEqual({});
+    expect(inlineStyleToObject('')).toEqual({});
   });
 
   it('should camelise each style whenever there is a hyphen', () => {
@@ -13,7 +13,7 @@ describe('Testing `utils/InlineStyleToObject', () => {
       textDecoration: 'none',
       'WebkitBorderRadius': '5px'
     };
-    expect(InlineStyleToObject(inlineStyle)).toEqual(expectedStyleObject);
+    expect(inlineStyleToObject(inlineStyle)).toEqual(expectedStyleObject);
   });
 
   it('should ignore invalid style properties', () => {
@@ -22,7 +22,7 @@ describe('Testing `utils/InlineStyleToObject', () => {
       fontColor: 'red',
       color: 'blue'
     };
-    expect(InlineStyleToObject(inlineStyle)).toEqual(expectedStyleObject);
+    expect(inlineStyleToObject(inlineStyle)).toEqual(expectedStyleObject);
   });
 
   it('should not upper case the beginning `m` when using the `-ms-` vendor prefix', () => {
@@ -30,7 +30,7 @@ describe('Testing `utils/InlineStyleToObject', () => {
     const expectedStyleObject = {
       'msBorderRadius': '10px'
     };
-    expect(InlineStyleToObject(inlineStyle)).toEqual(expectedStyleObject);
+    expect(inlineStyleToObject(inlineStyle)).toEqual(expectedStyleObject);
   });
 
 });
