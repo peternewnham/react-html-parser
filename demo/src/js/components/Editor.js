@@ -61,7 +61,6 @@ export default class Editor extends Component {
     }
     else {
       const { selectedExample } = this.props;
-      console.log(data[selectedExample]);
       const value = data[selectedExample].display ? data[selectedExample].display : `const options = ${JSON.stringify(data[selectedExample].options, null, 2)}`;
       return <AceEditor mode="javascript"
                         theme="chrome"
