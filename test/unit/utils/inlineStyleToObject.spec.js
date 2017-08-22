@@ -33,4 +33,13 @@ describe('Testing `utils/inlineStyleToObject', () => {
     expect(inlineStyleToObject(inlineStyle)).toEqual(expectedStyleObject);
   });
 
+  it('should parse styles containing multiple colons correctly', () => {
+    const inlineStyle = 'background:url(https://test.com/image.png);color:white;';
+    const expectedStyleObject = {
+      background: 'url(https://test.com/image.png)',
+      color: 'white'
+    };
+    expect(inlineStyleToObject(inlineStyle)).toEqual(expectedStyleObject);
+  });
+
 });
