@@ -10,6 +10,8 @@
   - `decodeEntities` (boolean: default true) - whether to decode HTML entities
   - `transform` (function) - function that can be used to transform parsed elements
 - Tags and attributes with invalid formats are now ignored and prevent React from blowing up
+### Bug Fixes
+- Fixed bug where inline styles containing colons would not be generated correctly (#9)
 
 ## v1.0.3
 ### Updates
