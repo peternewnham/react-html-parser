@@ -41,8 +41,8 @@ Takes an HTML string and returns equivalent React elements
 import ReactHtmlParser from 'react-html-parser';
 ```
 #### Arguments
-- html: The HTML string to parse
-- options: Options object
+- `html`: The HTML string to parse
+- `options`: Options object
   - decodeEntities=true *(boolean)*: Whether to decode html entities (defaults to true)
   - transform *(function)*: Transform function that is applied to every node
 
@@ -102,7 +102,7 @@ import { convertNodeToElement } from 'react-html-parser';
 import { convertNodeToElement } from 'react-html-parser';
 function transform(node, index) {
   // convert <ul> to <ol>
-  if (node.type === 'tag' && node.name === 'ul) {
+  if (node.type === 'tag' && node.name === 'ul') {
     node.name = 'ol';
     return convertNodeToElement(node, index, transform);
   }
