@@ -22,10 +22,11 @@ describe('Testing: `HtmlParser`', () => {
   });
 
   it('should apply the options', () => {
-    const transform = function() {};
-    expect(HtmlParser('html', { decodeEntities:false, transform })).toBe('processed');
+    const transform = jasmine.createSpy('transform');
+    const preprocessNodes = jasmine.createSpy('preprocessNodes').and.callFake(v => `preprocessed ${v}`);
+    expect(HtmlParser('html', { decodeEntities:false, transform, preprocessNodes })).toBe('processed');
     expect(htmlparser2.parseDOM).toHaveBeenCalledWith('html', {decodeEntities: false});
-    expect(processNodes).toHaveBeenCalledWith('parsed', transform);
+    expect(processNodes).toHaveBeenCalledWith('preprocessed parsed', transform);
   });
 
 });

@@ -4,7 +4,7 @@ node_js:
   - 8
 
 env:
-  - REACT_VERSION=next # 16 beta
+  - REACT_VERSION=16
   - REACT_VERSION=15
 
 script:

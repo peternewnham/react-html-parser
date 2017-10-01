@@ -1,6 +1,6 @@
 import React from 'react';
 import ReactDOMServer from 'react-dom/server';
-import HtmlParser, { convertNodeToElement } from 'index';
+import HtmlParser, { convertNodeToElement, htmlparser2 } from 'index';
 
 const reactVersion = parseInt(require('react/package.json').version.match(/^(\d+)\./)[1], 10);
 
@@ -168,6 +168,25 @@ describe('Integration tests: ', () => {
       '<div test<="test" class="test">content</div>',
       '<div class="test">content</div>'
     );
+  });
+
+  it('should preprocess nodes correctly', () => {
+    test(
+      '<div>preprocess test</div>',
+      '<div>preprocess test</div><div>preprocess test</div>',
+      {
+        preprocessNodes(nodes) {
+          return [
+            ...nodes,
+            ...nodes
+          ];
+        }
+      }
+    );
+  });
+
+  it('should expose htmlparser2', () => {
+    expect(htmlparser2).toBeDefined();
   });
 
 });
