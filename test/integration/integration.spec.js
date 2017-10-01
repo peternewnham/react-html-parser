@@ -185,4 +185,8 @@ describe('Integration tests: ', () => {
     );
   });
 
+  it('should expose htmlparser2', () => {
+    expect(htmlparser2).toBeDefined();
+  });
+
 });

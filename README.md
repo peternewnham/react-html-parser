@@ -21,7 +21,7 @@ yarn add react-html-parser
 
 ```javascript
 import React from 'react';
-import ReactHtmlParser, { processNodes, convertNodeToElement } from 'react-html-parser';
+import ReactHtmlParser, { processNodes, convertNodeToElement, htmlparser2 } from 'react-html-parser';
 
 class HtmlComponent extends React.Component {
   render() {
@@ -119,3 +119,9 @@ function transform(node, index) {
   }
 }
 ```
+
+### `htmlparser2`
+The library exposes the `htmlparser2` library it uses. This allows consumers
+to use it without having to add it as a separate dependency.
+
+See https://github.com/fb55/htmlparser2 for full details.
