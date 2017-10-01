@@ -16,7 +16,6 @@ config.module.loaders = config.module.loaders.concat([
       path.join(__dirname, 'src', 'js')
     ],
     loaders: [
-      'react-hot',
       'babel'
     ]
   },
