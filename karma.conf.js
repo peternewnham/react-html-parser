@@ -15,7 +15,8 @@ module.exports = function(karma) {
     singleRun: false,
     frameworks: [
       'jasmine',
-      'phantomjs-shim'
+      'phantomjs-shim',
+      'es6-shim'
     ],
     preprocessors: {
       'tests.webpack.js': 'webpack'
