@@ -68,6 +68,10 @@ describe('Integration tests: ', () => {
     test(`<div style="border-radius:1px;background:red${trailingSemiComma}">test</div>`);
   });
 
+  it('should ignore inline styles that are empty strings', () => {
+    test('<div style="">test</div>', '<div>test</div>');
+  });
+
   it('should not allow nesting of void elements', () => {
     test('<img><p>test</p></img>', '<img/><p>test</p>');
   });

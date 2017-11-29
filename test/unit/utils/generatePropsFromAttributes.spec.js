@@ -45,4 +45,16 @@ describe('Testing `utils/generatePropsFromAttributes`', () => {
 
   });
 
+  it('should return an object containing the converted style prop when the style html attribute is an empty string', () => {
+    const attributes = {
+      style: ''
+    };
+
+    expect(generatePropsFromAttributes(attributes, 'style-key')).toEqual({
+      style: 'converted-style',
+      key: 'style-key'
+    });
+    expect(inlineStyleToObject).toHaveBeenCalledWith('');
+  });
+
 });
