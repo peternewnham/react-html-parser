@@ -12,9 +12,12 @@ export default function generatePropsFromAttributes(attributes, key) {
   // generate props
   const props = Object.assign({}, htmlAttributesToReact(attributes), { key });
 
-  // if there is a style prop then convert it to a React style object
-  if (props.style) {
+  // if there is an inline/string style prop then convert it to a React style object
+  // otherwise, it is invalid and omitted
+  if (typeof props.style === 'string' || props.style instanceof String) {
     props.style = inlineStyleToObject(props.style);
+  } else {
+    delete props.style;
   }
 
   return props;
