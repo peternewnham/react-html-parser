@@ -193,4 +193,10 @@ describe('Integration tests: ', () => {
     expect(htmlparser2).toBeDefined();
   });
 
+  it('should preserve whitespace with new lines between nodes', () => {
+    test(
+      '<strong>there should be</strong>\n  <strong>a space</strong>',
+      '<strong>there should be</strong>\n  <strong>a space</strong>'
+    );
+  });
 });
