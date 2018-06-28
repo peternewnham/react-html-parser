@@ -10,7 +10,7 @@ import inlineStyleToObject from './inlineStyleToObject';
 export default function generatePropsFromAttributes(attributes, key) {
 
   // generate props
-  const props = Object.assign({}, htmlAttributesToReact(attributes), { key });
+  const props = Object.assign({ key }, htmlAttributesToReact(attributes));
 
   // if there is an inline/string style prop then convert it to a React style object
   // otherwise, it is invalid and omitted
