@@ -30,5 +30,5 @@ export default [
   'scoped',
   'seamless',
   'selected',
-  'itemscope'
+  'itemScope'
 ];
