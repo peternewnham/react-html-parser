@@ -11,8 +11,9 @@ import processNodes from './processNodes';
 export default function HtmlParser(html, {
   decodeEntities = true,
   transform,
-  preprocessNodes = nodes => nodes
+  preprocessNodes = nodes => nodes,
+  lowerCaseAttributeNames = false,
 }={}) {
-  const nodes = preprocessNodes(htmlparser2.parseDOM(html, { decodeEntities }));
+  const nodes = preprocessNodes(htmlparser2.parseDOM(html, { decodeEntities, lowerCaseAttributeNames }));
   return processNodes(nodes, transform);
 }
