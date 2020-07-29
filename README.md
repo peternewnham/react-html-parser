@@ -1,6 +1,6 @@
 # React HTML Parser
 
-A utility for converting HTML strings into [React](https://facebook.github.io/react/) components. Avoids the use of dangerouslySetInnerHTML and converts standard HTML elements, attributes and inline styles into their React equivalents.
+A utility for converting HTML strings into [React](https://facebook.github.io/react/) components. Converts standard HTML elements, attributes and inline styles into their React equivalents and provides a simple way to modify and replace the content.
 
 [Try the Live Demo](https://wrakky.github.io/react-html-parser)
 
@@ -31,6 +31,24 @@ class HtmlComponent extends React.Component {
   }
 }
 ```
+
+## Security
+
+It is important to understand that this library should not be used as a direct replacement for using properly sanitized HTML and that it only provides the same level of protection that React does which does not provide 100% protection. All HTML should be properly sanitized using a dedicated sanitisation library (such as [dompurify](https://www.npmjs.com/package/dompurify) for node/js) before being passed to this library to ensure that you are fully protected from [malicious injections](https://en.wikipedia.org/wiki/Cross-site_scripting).
+
+### What doesn't React protect me from?
+
+Whilst React has a [certain level of protection to injection attacks](https://reactjs.org/docs/introducing-jsx.html#jsx-prevents-injection-attacks) built into it, it doesn't cover everything, for example:
+* xss via iframe src: `<iframe src="javascript:alert('xss')" />`
+* xss via link href: `<a href="javascript:alert('xss')">click me</a>`
+
+[Click here](https://codesandbox.io/s/reacthtmlparser-xss-examples-ijgiu?file=/src/App.js) to see these in action and how to protect yourself using [dompurify](https://www.npmjs.com/package/dompurify) in the browser.
+
+### Why doesn't ReactHTMLParser protect me automatically?
+
+Including a sanitizer as part of the library means it is making decisions for you that may not be correct. It is up to you to decide what level of sanitization you need and to act accordingly. Some users may already be sanitizing on the server or others may have specialized requirements that cannot be covered by a generic implementation.
+
+Additionally, HTML sanitization is a hard thing to get right and even the most popular and actively developed sanitizers have [vulnerabilities discovered](https://snyk.io/vuln/npm:dompurify) from time to time. By leaving the sanitization outside of this library it gives users the ability to patch and deploy any fixes needed immediately instead of having to wait for a new version of this library to be released with the fix.
 
 ## API
 
