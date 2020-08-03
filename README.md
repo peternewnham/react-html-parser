@@ -78,7 +78,7 @@ The transform function will be called for every node that is parsed by the libra
   - `next` (node): The node's next sibling
   - `prev` (node): The node's previous sibling
   - `parent` (node): The node's parent
-  - `data` (string): The text content, if the `type` is text
+  - `data` (string): The text content, if the `type` is `text` or `comment`
 - `index` (number): The index of the node in relation to it's parent
 
 #### Return Types
