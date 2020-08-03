@@ -6,7 +6,9 @@
   "scripts": {
     "start": "node server.js",
     "build": "webpack --config webpack.config.production.js --progress",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "snyk-protect": "snyk protect",
+    "prepare": "npm run snyk-protect"
   },
   "author": "Peter Newnham",
   "license": "MIT",
@@ -39,6 +41,8 @@
     "react-ace": "^5.1.2",
     "react-dom": "^16.0.0",
     "react-redux": "^5.0.6",
-    "redux": "^3.7.2"
-  }
+    "redux": "^3.7.2",
+    "snyk": "^1.316.1"
+  },
+  "snyk": true
 }
