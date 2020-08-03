@@ -1,4 +1,3 @@
-import isEmptyTextNode from './utils/isEmptyTextNode';
 import convertNodeToElement from './convertNodeToElement';
 
 /**
@@ -11,7 +10,6 @@ import convertNodeToElement from './convertNodeToElement';
 export default function processNodes(nodes, transform) {
 
   return nodes
-    .filter(node => !isEmptyTextNode(node))
     .map((node, index) => {
 
       // return the result of the transform function if applicable

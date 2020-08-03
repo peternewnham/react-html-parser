@@ -1,32 +1,14 @@
-const isEmptyTextNode = jasmine.createSpy('isEmptyTextNode');
 const convertNodeToElement = jasmine.createSpy('convertNodeToElement');
 
 const processNodes = require('inject!processNodes')({
-  './utils/isEmptyTextNode': isEmptyTextNode,
   './convertNodeToElement': convertNodeToElement
 }).default;
 
 describe('Testing `processNodes`', () => {
 
   beforeEach(() => {
-    isEmptyTextNode.calls.reset();
-    isEmptyTextNode.and.returnValue(false);
     convertNodeToElement.calls.reset();
     convertNodeToElement.and.callFake(node => node);
-  });
-
-  it('should filter out empty text nodes', () => {
-
-    isEmptyTextNode.and.callFake(node => node !== 'node2');
-
-    const nodes = [
-      'node1',
-      'node2',
-      'node3'
-    ];
-
-    expect(processNodes(nodes)).toEqual(['node2']);
-
   });
 
   it('should return the response from the transform function if it is not undefined', () => {
