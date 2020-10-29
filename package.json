@@ -65,8 +65,8 @@
     "karma-spec-reporter": "^0.0.26",
     "karma-webpack": "^1.7.0",
     "phantomjs-prebuilt": "^2.1.7",
-    "react": "^16.0.0",
-    "react-dom": "^16.0.0",
+    "react": "^17.0.1",
+    "react-dom": "^17.0.1",
     "rimraf": "^2.5.2",
     "webpack": "^1.13.0"
   },
@@ -74,6 +74,6 @@
     "htmlparser2": "^3.9.0"
   },
   "peerDependencies": {
-    "react": "^0.14.0 || ^15.0.0 || ^16.0.0-0"
+    "react": "^0.14.0 || ^15.0.0 || ^16.0.0-0 || ^17.0.0"
   }
 }
