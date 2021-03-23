@@ -42,4 +42,12 @@ describe('Testing `utils/inlineStyleToObject', () => {
     expect(inlineStyleToObject(inlineStyle)).toEqual(expectedStyleObject);
   });
 
+  it('should parse style values containing upper-case characters correctly', () => {
+    const inlineStyle = 'background:url(https://test.com/IMAGE.png);';
+    const expectedStyleObject = {
+      background: 'url(https://test.com/IMAGE.png)',
+    };
+    expect(inlineStyleToObject(inlineStyle)).toEqual(expectedStyleObject);
+  });
+
 });
