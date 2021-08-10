@@ -135,6 +135,7 @@ export default {
   width: 'width',
   wmode: 'wmode',
   wrap: 'wrap',
+  viewbox: 'viewBox',
   /**
    * RDFa Properties
    */
