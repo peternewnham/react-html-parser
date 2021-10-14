@@ -33,10 +33,9 @@ export default function htmlAttributesToReact(attributes) {
 
   return Object
     .keys(attributes)
-    .filter(attr => isValidTagOrAttributeName(attr))
+    .filter(isValidTagOrAttributeName)
     .reduce(
       (mappedAttributes, attribute) => {
-
         // lowercase the attribute name and find it in the react attribute map
         const lowerCaseAttribute = attribute.toLowerCase();
 
