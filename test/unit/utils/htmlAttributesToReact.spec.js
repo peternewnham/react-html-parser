@@ -1,3 +1,5 @@
+const realOne = require('../../../src/utils/isValidTagOrAttributeName');
+
 const isValidTagOrAttributeName = jasmine.createSpy('isValidTagOrAttributeName');
 
 const htmlAttributesToReact = require('inject!utils/htmlAttributesToReact')({
@@ -67,4 +69,14 @@ describe('Testing `utils/htmlAttributesToReact`', () => {
     expect(Object.keys(validKeys)).toEqual(['attribute1', 'attribute3']);
   });
 
+  it('should filter out `constructor` as invalid attributes', () => {
+    isValidTagOrAttributeName.and.callFake(realOne.default);
+
+    const validKeys = htmlAttributesToReact({
+      constructor: '',
+      extends: ''
+    })
+
+    expect(Object.keys(validKeys)).toEqual(['extends']);
+  })
 });
