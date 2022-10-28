@@ -56,7 +56,7 @@
     "isparta-loader": "^2.0.0",
     "jasmine-core": "^2.4.1",
     "json-loader": "^0.5.4",
-    "karma": "^0.13.22",
+    "karma": "^6.4.1",
     "karma-coverage": "^1.0.0",
     "karma-es6-shim": "^1.0.0",
     "karma-jasmine": "^1.0.2",
