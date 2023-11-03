@@ -136,6 +136,33 @@ export default {
   wmode: 'wmode',
   wrap: 'wrap',
   /**
+   * SVG attributes
+   */
+  'clip-path': 'clipPath',
+  'clip-rule': 'clipRule',
+  'fill-opacity': 'fillOpacity',
+  'fill-rule': 'fillRule',
+  'font-family': 'fontFamily',
+  'font-size': 'fontSize',
+  'font-size-adjust': 'fontSizeAdjust',
+  'font-stretch': 'fontStretch',
+  'font-style': 'fontStyle',
+  'font-variant': 'fontVariant',
+  'font-weight': 'fontWeight',
+  'stop-color': 'stopColor',
+  'stop-opacity': 'stopOpacity',
+  'stroke-dasharray': 'strokeDasharray',
+  'stroke-dashoffset': 'strokeDashoffset',
+  'stroke-linecap': 'strokeLinecap',
+  'stroke-linejoin': 'strokeLinejoin',
+  'stroke-miterlimit': 'strokeMiterlimit',
+  'stroke-width': 'strokeWidth',
+  'stroke-opacity': 'strokeOpacity',
+  viewbox: 'viewBox',
+  'xlink:href': 'xlinkHref',
+  'xmlns:xlink': 'xmlnsXlink',
+  'xml:space': 'xmlSpace',
+  /**
    * RDFa Properties
    */
   about: 'about',
