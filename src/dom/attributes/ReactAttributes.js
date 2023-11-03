@@ -158,6 +158,7 @@ export default {
   'stroke-miterlimit': 'strokeMiterlimit',
   'stroke-width': 'strokeWidth',
   'stroke-opacity': 'strokeOpacity',
+  viewbox: 'viewBox',
   'xlink:href': 'xlinkHref',
   'xmlns:xlink': 'xmlnsXlink',
   'xml:space': 'xmlSpace',
